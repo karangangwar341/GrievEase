@@ -5,7 +5,8 @@ import { auth, database } from '../../../firebase.js'
 import { collection, addDoc } from "firebase/firestore";
 
 const SignUp = () => {
-  const [passwordAreNotEqual, setPasswordAreNotEqual] = useState();
+  const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
+
   function submitHandler(event) {
     event.preventDefault();
 
@@ -24,20 +25,22 @@ const SignUp = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         alert("Sign up successfully");
-        const UserRef = collection(database, "users");
-        addDoc(UserRef, {
+
+        const userRef = collection(database, "users");
+        addDoc(userRef, {
           Name: data.name,
           Email: data.email,
           phoneNumber: data.phoneNumber,
           signInType: data.role,
           UID: user.uid,
+        }).then(() => {
+          console.log("Document successfully written!");
         }).catch((error) => {
           console.error("Error adding document: ", error);
           alert("Error adding document");
         });
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
         console.error(errorMessage);
         alert(errorMessage);
