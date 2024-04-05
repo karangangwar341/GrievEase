@@ -6,8 +6,11 @@ function App() {
 
   return (
     <>
-      <SignUp/>
-      <Login/>
+    <div className='bg-gradient-to-br from-orange-300 to-orange-500 h-screen w-screen'>
+    <SignUp/>
+    </div>
+      
+      
     </>
   )
 }
