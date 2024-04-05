@@ -1,20 +1,47 @@
 import { useState } from "react";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth, database } from '../../../firebase.js'
+//import { useNavigate } from "react-router-dom";
+import { collection, addDoc } from "firebase/firestore";
+
 const SignUp = () => {
   const [passwordAreNotEqual, setPasswordAreNotEqual] = useState();
   function submitHandler(event) {
     event.preventDefault();
 
     const fd = new FormData(event.target);
-    // const enteredEmail=fd.get('email')
     const acquisitionChannel = fd.getAll("acquisition");
     const data = Object.fromEntries(fd.entries());
 
     data.acquisition = acquisitionChannel;
-    if (data.password != data["confirm-password"]) {
+
+    if (data.password !== data["confirm-password"]) {
       setPasswordAreNotEqual(true);
       return;
     }
-    console.log(data);
+
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        alert("Sign up successfully");
+        const UserRef = collection(database, "users");
+        addDoc(UserRef, {
+          Name: data.name,
+          Email: data.email,
+          phoneNumber: data.phoneNumber,
+          signInType: data.role,
+          UID: user.uid,
+        }).catch((error) => {
+          console.error("Error adding document: ", error);
+          alert("Error adding document");
+        });
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(errorMessage);
+        alert(errorMessage);
+      });
 
     event.target.reset();
   }
