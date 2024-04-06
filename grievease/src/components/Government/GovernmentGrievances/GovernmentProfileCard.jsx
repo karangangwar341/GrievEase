@@ -28,14 +28,14 @@ const GovernmentProfileCard = ({ post ,change,show}) => {
                         <h2 className='text-2xl font-semibold'>{post.title}</h2>
                     </div>
                     <div>
-                        <h3 className='bg-white w-1/4 rounded-2xl px-2'>{post.department}</h3>
+                        <h3 className='bg-white w-36 rounded-2xl px-2'>{post.department}</h3>
                     </div>
                     <div className='detail pt-3 text-sm text-red-950'>
                         <h2>By: {post.name}</h2>
                         <h3>{post.date}</h3>
                         <p className='flex flex-row items-center cursor-pointer' onClick={toggleDescription}>
                             Description
-                            {showDescription ? <MdKeyboardArrowUp className='ml-1'/> : <MdKeyboardArrowDown className='ml-1'/>}
+                            {showDescription ? <MdKeyboardArrowUp className='ml-1 w-6 h-5 pt-1'/> : <MdKeyboardArrowDown className='ml-1 w-6 h-5 pt-1'/>}
                         </p>
                         {showDescription && (
                             <div>
@@ -44,9 +44,9 @@ const GovernmentProfileCard = ({ post ,change,show}) => {
                         )}
                     </div>
                 </div>
-                <div className=' pt-8 flex flex-col justify-center items-center '>
-                    <div><p>Status:{post.status}</p></div>
-                    {show && <button onClick={handleStatus}><TbArrowBigRightLinesFilled/> {change}</button>}
+                <div className=' pt-1 flex flex-col justify-center items-center '>
+                    <div className='pb-7'><p>Status:{post.status}</p></div>
+                    {show && <button onClick={handleStatus}><TbArrowBigRightLinesFilled className='pl-3 w-9 h-9'/> {change}</button>}
                     
                 </div>
             </div>

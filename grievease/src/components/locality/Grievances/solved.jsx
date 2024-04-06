@@ -22,7 +22,7 @@ const Solved = () => {
   }, []);
   return (
     <div>
-      <div className="card-headerG text-3xl font-bold text-orange-900 mb-4 items-center justify-center' text-center">Grievances</div>
+      <div className="card-headerG text-3xl font-bold text-orange-900 mb-4 items-center justify-center' text-center"> Solved Grievances</div>
            <div className="overflow-y-scroll " style={{ overflowY: 'auto', msOverflowStyle: 'none', scrollbarWidth: 'none' }}> 
       {grievanceData.map((post, index) => (
         <ProfileCard key={index} post={post} />

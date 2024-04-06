@@ -7,7 +7,7 @@ const LowerIn=(props)=>{
     return(
         <button onClick={SubmitHandler}className="innerinfo">
          
-         <div className="innerinfocontent">
+         <div className="innerinfocontent focus:bg-white/10">
            <span ><img src={props.imgurl} alt="Logo" className="icon"  /></span> 
             <span><p className="item">{props.name}</p></span>
             <span className="arrow"><p>&rarr;</p></span>

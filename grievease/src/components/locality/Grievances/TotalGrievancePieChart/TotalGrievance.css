@@ -35,17 +35,19 @@
     box-shadow: 0 2px 5px #6c3428  ;
    height: 100%;
    width: 100%;
-    border-radius: 5px;
+    border-radius: 10px;
     z-index: 111;
     display: flex;
+    padding-top: 5%;
+    padding-bottom: 5%;
     justify-content: space-between;
 }
 
-.welcome-info {
-    font-size: 1.7em;
+/* .welcome-info {
+    font-size: 10px;
     color: #6c3428;
-    font-weight: 500;
-}
+   
+} */
 .total {
     font-size: 1.5em;
     color: #381007;

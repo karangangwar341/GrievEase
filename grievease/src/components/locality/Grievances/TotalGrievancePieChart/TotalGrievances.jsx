@@ -11,8 +11,8 @@ function TotalGrievance() {
      <TotalGrievanceData></TotalGrievanceData>
     </div>
     <div className="contentContainer">
-        <p className="welcome-info">
-          <strong>Welcome to GrievEase!</strong><br />Introducing our Grievance Portal: A unified platform where individuals can report their concerns and engage with a supportive community to collectively address issues, fostering a sense of empowerment and resolution.
+        <p className="welcome-info text-lg">
+          <strong className="">Welcome to GrievEase!</strong><br />Introducing our Grievance Portal: A unified platform where individuals can report their concerns and engage with a supportive community to collectively address issues, fostering a sense of empowerment and resolution.
         </p>
       </div>
     </div>

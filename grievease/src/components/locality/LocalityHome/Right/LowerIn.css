@@ -16,7 +16,7 @@
   }
   .innerinfo:hover{
       cursor:pointer;
-      box-shadow: 0 2px 5px #6c3428  ;
+      box-shadow: 0 2px 3px #6c3428  ;
   }
   .innerinfocontent {
     display: flex;
@@ -25,6 +25,7 @@
     width: 100%;
     padding: 0px;
     position: relative;
+    
     /* overflow: hidden; */
   }
   

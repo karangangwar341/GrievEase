@@ -11,7 +11,7 @@ const Lower = () => {
 
   const infodata = [
     {
-      text: "Rules regarding Grievances",
+      text: "Guidelines",
       imgurl: Rules,
     },
     {
