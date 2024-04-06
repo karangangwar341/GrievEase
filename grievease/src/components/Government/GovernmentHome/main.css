@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+}
+.left .middle .right{
+    margin:0px;
+    /* padding: 1.5em; */
+    display: inline-block;
+}
+.main{
+    width:100%;
+    height: 100%;
+   overflow-y: hidden;
+}
+
+.left{
+    padding: 1em ;
+    /* padding-left: 2em;
+     */
+    width:20%;
+    min-width: 250px;
+    overflow-y: scroll;
+    height: 90vh;
+    margin-top: 5px;
+    
+}
+
+.middle {
+    width: 57%;
+    padding: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    height: 85vh;
+    overflow-y: scroll;
+    
+}
+
+/* Hide the scrollbar but still enable scrolling */
+.middle::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar */
+    background: transparent; /* Optional: if you want no background color */
+}
+.left::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar */
+    background: transparent; /* Optional: if you want no background color */
+}
+.right::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar */
+    background: transparent; /* Optional: if you want no background color */
+}
+
+.right{
+    
+    width:23%;
+    min-width: 250px;
+    padding: 1em;
+    overflow-y: scroll;
+    height: 90vh;
+    margin-top: 5px;
+}
+
+.centered-nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

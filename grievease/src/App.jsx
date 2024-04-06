@@ -16,6 +16,16 @@ import Process from "./components/locality/process/process.jsx";
 import Rules from "./components/locality/Rules/rules.jsx";
 import About from "./components/locality/about/about.jsx";
 import PieChart from "./components/locality/Grievances/InYourArea/PieChar.jsx";
+import GovernmentMain from "./components/Government/GovernmentHome/main.jsx";
+import GovernmentGrievances from "./components/Government/GovernmentGrievances/Grievances.jsx";
+import InProcess from "./components/Government/GovernmentGrievances/InProcess.jsx";
+import GovernmentSolved from "./components/Government/GovernmentGrievances/Solved.jsx";
+import GovernmentElectricity from "./components/Government/GovernmentGrievances/Departments/GovernmentElectricity.jsx";
+import GovernmentWater from "./components/Government/GovernmentGrievances/Departments/GovernmentWater.jsx";
+import GovernmentRoad from "./components/Government/GovernmentGrievances/Departments/GovernmentRoadways.jsx";
+import GovernmentLaw from "./components/Government/GovernmentGrievances/Departments/GovernmentLaw.jsx";
+import GovernmentMis from "./components/Government/GovernmentGrievances/Departments/GovernmentMis.jsx";
+import GovernmentWaste from "./components/Government/GovernmentGrievances/Departments/GovernmentWaste.jsx";
 
 function App() {
   return (
@@ -38,6 +48,17 @@ function App() {
           <Route exact path="/home/process" element={<Process/>} />
           <Route exact path="/home/rules" element={<Rules/>} />
           <Route exact path="/home/about" element={<About/>} />
+        </Route>
+        <Route exact path="/government" element={<GovernmentMain/>}>
+          <Route exact path="/government/grievances" element={<GovernmentGrievances/>}/>
+          <Route exact path="/government/inprocess" element={<InProcess/>}/>
+          <Route exact path="/government/Solved" element={<GovernmentSolved/>}/>
+          <Route exact path="/government/elec" element={<GovernmentElectricity/>}/>
+          <Route exact path="/government/water" element={<GovernmentWater/>}/>
+          <Route exact path="/government/road" element={<GovernmentRoad/>}/>
+          <Route exact path="/government/law" element={<GovernmentLaw/>}/>
+          <Route exact path="/government/mis" element={<GovernmentMis/>}/>
+          <Route exact path="/government/waste" element={<GovernmentWaste/>}/>
         </Route>
       </Routes>
     </>

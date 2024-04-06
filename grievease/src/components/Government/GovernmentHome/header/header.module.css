@@ -1,0 +1,156 @@
+.header {
+    height: 8vh;
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #fff;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  .logocontainer {
+      display: flex;
+      align-items: center;
+      border-radius: 20%;
+  }
+  .logo {
+      width: 35px;
+      height: 35px;
+      margin-right: 1rem;
+  }
+  .appName{
+      margin: 0;
+      color: #df6609;
+      font-family: 'Amatic sc', cursive;
+  }
+  .searchContainer {
+      display: flex;
+      align-items: center;
+      border-radius: 20px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 12px;
+      width: 40%;
+      height: 3vh;
+    }
+    
+  .searchInput.navSearch {
+      flex: 1;
+      border: none;
+      outline: none;
+      padding: 8px;
+      color: darkblue;
+      background: transparent;
+      font-size: 16px;
+      width: 100%;
+    }
+    
+  .searchButton {
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: darkblue;
+    }
+    
+  .iconsContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+  .iconButton {
+      border: none;
+    background: none;
+    cursor: pointer;
+    margin: 0 0.3rem;
+    color: #f60;
+    width: 35px;
+    height: 4vh;
+    border-radius: 20%;
+    background-color: #fff;
+    }
+    
+  .profileName {
+      margin: 0 0.3rem;
+      color: #006;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+  }
+  .iconButton:active{
+      background-color: red;
+      color: black;
+  }
+
+  .profileCard {
+    position: relative;
+    display: inline-block;
+  }
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 2;
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .updateProfile h2 {
+    margin-top: 10px;
+    color: #200904;
+  }
+  
+  .updateProfile {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  .formGroup {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .updateProfile label {
+    display: block;
+    margin-bottom: 0;
+    color: #B2533E;
+    font-size: 1rem;
+  }
+  
+  .updateProfile input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: rgb(255, 255, 245);
+  }
+  
+  .updateButton {
+    background-color: #B2533E;
+    color: white;
+    padding: 5px 16px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    align-items: center;
+    width: auto;
+    height: 2em;
+    display: inline-block;
+  }
+.credit {
+  color: #f60;
+  font-weight: bold;
+  margin-right: 20px;
+}

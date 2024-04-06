@@ -1,0 +1,56 @@
+/* * {
+    box-sizing: border-box;
+  } */
+  .innerinfo {
+    background-color: rgba(255, 255, 255, 0);
+    
+    border-radius: 8px;
+    height: 4em;
+    overflow: hidden;
+    padding: auto;
+    margin:0.25em 0;
+    width: 100%;
+    border-width: 0;
+    backdrop-filter: blur(10px); /* Apply the background blur */
+    -webkit-backdrop-filter: blur(10px); 
+  }
+  .innerinfo:hover{
+      cursor:pointer;
+      box-shadow: 0 2px 5px #6c3428  ;
+  }
+  .innerinfocontent {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0px;
+    position: relative;
+    /* overflow: hidden; */
+  }
+  
+  .icon {
+    /* width: 30px;
+    height: 30px; */
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 10%;
+    margin:.15em;
+    margin-right: 0;
+    justify-self: center;
+  }
+  
+  .item {
+  
+    font-weight: bold;
+    text-align: center;
+    margin-left: 0.4em;
+    overflow: hidden;
+    display: inline;
+    font-size: 1.1em;
+    color: #6c3428;
+  }
+  .arrow{
+    
+    position:absolute;
+    right: 0;
+    
+  }

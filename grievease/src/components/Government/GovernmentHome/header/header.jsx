@@ -1,3 +1,5 @@
+// header.jsx (or header.tsx if using TypeScript)
+
 import { useState, useEffect } from 'react';
 import { auth, database } from '../../../../firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
@@ -10,28 +12,22 @@ import SearchIcon from '@mui/icons-material/Search';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import styles from './header.module.css';
 import LogoutIcon from '@mui/icons-material/Logout';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DiamondIcon from '@mui/icons-material/Diamond';
-import { useNavigate } from 'react-router-dom';
-const Nav = () => {
-  const navigate= useNavigate();
-  const [credit, setCredit] = useState(10);
 
+const Header = () => {
   const [open, setOpen] = useState(false);
   const [userData, setUserData] = useState({
     Name: '',
     Email: '',
     phoneNumber: '',
-    city: '',
-    locality: '',
+    Address: ''
   });
   const [formData, setFormData] = useState({
     Name: '',
     phoneNumber: '',
-    city: '',
-    locality: '',
+    Address: ''
   });
-
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -46,9 +42,6 @@ const Nav = () => {
     const user = auth.currentUser;
     if (user) {
       fetchUserDetails();
-    }
-    else{
-      navigate('/next',{replace:true})
     }
   }, []);
 
@@ -73,7 +66,6 @@ const Nav = () => {
           throw new Error('User document not found in Firestore.');
         }
       } else {
-        navigate('/next',{replace:true})
         throw new Error('User is not authenticated.');
       }
     } catch (error) {
@@ -93,30 +85,26 @@ const Nav = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(formData.Name===''){
+    if (formData.Name === '') {
       formData.Name = userData.Name;
     }
-    if(formData.phoneNumber===''){
+    if (formData.phoneNumber === '') {
       formData.phoneNumber = userData.phoneNumber;
     }
-    if(formData.city===''){
-      formData.city = userData.city;
-    }
-    if(formData.locality===''){
-      formData.locality = userData.locality;
+    if (formData.Address === '') {
+      formData.Address = userData.Address;
     }
     console.log(formData);
-    try{
-    const userDataCollection = 'users';
-    const userCollection = collection(database, userDataCollection);
-    const user = auth.currentUser;
-    const q = query(userCollection, where('UID', '==', user.uid));
-    const querySnapshot = await getDocs(q);
-    const docRef = querySnapshot.docs[0].ref;
-    await updateDoc(docRef, formData);
-    }
-    catch{
-      console.error('error');
+    try {
+      const userDataCollection = 'users';
+      const userCollection = collection(database, userDataCollection);
+      const user = auth.currentUser;
+      const q = query(userCollection, where('UID', '==', user.uid));
+      const querySnapshot = await getDocs(q);
+      const docRef = querySnapshot.docs[0].ref;
+      await updateDoc(docRef, formData);
+    } catch (error) {
+      console.error('Error updating user data:', error);
     }
     setOpen(false);
     window.location.reload();
@@ -140,14 +128,13 @@ const Nav = () => {
       </div>
 
       <div className={styles.searchContainer}>
-        < input type="text" placeholder="Type here to Search..." className={`${styles.searchInput} ${styles.navSearch}`} />
+        <input type="text" placeholder="Type here to Search..." className={`${styles.searchInput} ${styles.navSearch}`} />
         <button className={styles.searchButton}><SearchIcon /></button>
       </div>
 
       <div className={styles.iconsContainer}>
         <button className={styles.iconButton}><DiamondIcon /></button>
-        <span className={styles.credit}>{credit}</span>
-        <button className={styles.iconButton} onClick={handleLogout} ><LogoutIcon /></button>
+        <button className={styles.iconButton} onClick={handleLogout}><LogoutIcon /></button>
         {/* <button className={styles.iconButton}><NotificationsIcon /></button> */}
         <button className={styles.iconButton}><ProfileIcon /></button>
         <span className={styles.profileName}>{userData.Name}</span>
@@ -181,24 +168,13 @@ const Nav = () => {
                     />
                   </div>
                   <div className={styles.formGroup}>
-                    <label htmlFor="locality">locality:</label>
+                    <label htmlFor="Address">Address:</label>
                     <input
-                      placeholder={userData.locality}
+                      placeholder={userData.Address}
                       type="text"
-                      id="locality"
-                      name="locality"
-                      value={formData.locality}
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div className={styles.formGroup}>
-                    <label htmlFor="city">city:</label>
-                    <input
-                      placeholder={userData.city}
-                      type="text"
-                      id="city"
-                      name="city"
-                      value={formData.city}
+                      id="Address"
+                      name="Address"
+                      value={formData.Address}
                       onChange={handleInputChange}
                     />
                   </div>
@@ -215,4 +191,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Header;
