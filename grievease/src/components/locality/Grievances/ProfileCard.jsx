@@ -1,14 +1,26 @@
 import React, { useState } from 'react';
 import { FaHeart } from "react-icons/fa";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { database } from "../../../firebase";
+import { updateDoc,doc } from "firebase/firestore";
+
 
 const ProfileCard = ({ post }) => {
-    const [totalCount, setTotalCount] = useState(post.likes);
+    const [totalCount, setTotalCount] = useState(post.Upvotes);
     const [showDescription, setShowDescription] = useState(false);
 
-    function handleLikes() {
+    const handleLikes = async () =>{
         setTotalCount((count) => count + 1);
-    }
+        const grievanceRef = doc(database, "grievances", post.id);
+        await updateDoc(grievanceRef, { Upvotes: (post.Upvotes)+1 });
+        console.log(post.id);
+        window.location.reload();
+      }
+    
+    // function () {
+    //     
+    //     
+    // }
 
     function toggleDescription() {
         setShowDescription(!showDescription);
@@ -22,13 +34,13 @@ const ProfileCard = ({ post }) => {
                 </div>
                 <div className='w-4/6'>
                     <div className='mb-1'>
-                        <h2 className='text-2xl font-semibold'>{post.name}</h2>
+                        <h2 className='text-2xl font-semibold'>{post.title}</h2>
                     </div>
                     <div>
                         <h3 className='bg-white w-1/4 rounded-2xl px-2'>{post.department}</h3>
                     </div>
                     <div className='detail pt-3 text-sm text-red-950'>
-                        <h2>By: {post.by}</h2>
+                        <h2>By: {post.name}</h2>
                         <h3>{post.date}</h3>
                         <p className='flex flex-row items-center cursor-pointer' onClick={toggleDescription}>
                             Description

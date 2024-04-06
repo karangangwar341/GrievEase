@@ -1,5 +1,5 @@
 import ProfileCard from "./ProfileCard";
-import { database } from "../../../firebase";
+import { auth, database } from "../../../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 
@@ -8,7 +8,7 @@ const YourGrievances = () => {
 
   const fetchGrievanceData = async () => {
     const userCollections = collection(database, "grievances");
-    const q =query(userCollections, where('status','!=','solved'));
+    const q =query(userCollections, where('uid','==',auth.currentUser.uid));
     const data = await getDocs(q);
     const fil = data.docs.map((doc) => ({
       ...doc.data(),

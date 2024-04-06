@@ -12,7 +12,9 @@ import styles from './header.module.css';
 import LogoutIcon from '@mui/icons-material/Logout';
 import {Link} from 'react-router-dom';
 import DiamondIcon from '@mui/icons-material/Diamond';
+import { useNavigate } from 'react-router-dom';
 const Nav = () => {
+  const navigate= useNavigate();
   const [credit, setCredit] = useState(10);
 
   const [open, setOpen] = useState(false);
@@ -45,6 +47,9 @@ const Nav = () => {
     if (user) {
       fetchUserDetails();
     }
+    else{
+      navigate('/next',{replace:true})
+    }
   }, []);
 
   const fetchUserDataFromFirestore = async () => {
@@ -68,6 +73,7 @@ const Nav = () => {
           throw new Error('User document not found in Firestore.');
         }
       } else {
+        navigate('/next',{replace:true})
         throw new Error('User is not authenticated.');
       }
     } catch (error) {

@@ -15,6 +15,7 @@ import Grievances from "./components/locality/Grievances/Grievances.jsx";
 import Process from "./components/locality/process/process.jsx";
 import Rules from "./components/locality/Rules/rules.jsx";
 import About from "./components/locality/about/about.jsx";
+import PieChart from "./components/locality/Grievances/InYourArea/PieChar.jsx";
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route exact path="/home/grievances" element={<Grievances/>} />
           <Route exact path="/home/new" element={<CardComponent/>} />
           <Route exact path="/home/yourGrievances" element={<YourGrievances/>} />
-          <Route exact path="/home/area" element={<Waste/>} />
+          <Route exact path="/home/area" element={<PieChart/>} />
           <Route exact path="/home/solved" element={<Waste/>} />
           <Route exact path="/home/process" element={<Process/>} />
           <Route exact path="/home/rules" element={<Rules/>} />

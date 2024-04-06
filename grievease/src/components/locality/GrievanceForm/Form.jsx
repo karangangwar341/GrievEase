@@ -62,7 +62,7 @@ class FormComponent extends Component {
         department: this.state.selectedOption,
         description: this.state.description,
         phoneNumber: this.state.countryCode + this.state.phoneNumber,
-        // uid: auth.currentUser.uid,
+        uid: auth.currentUser.uid,
         Upvotes: 0,
         title:this.state.title,
         timestamp: serverTimestamp(),
