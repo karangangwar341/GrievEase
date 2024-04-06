@@ -19,8 +19,8 @@ const Main=()=>{
             </div>
             <div className="middle">
                 {/* <ProfileCard/> */}
-                {/* <CardComponent/> */}
-                <YourGrievances/>
+                <CardComponent/>
+                {/* <YourGrievances/> */}
             </div>
             <div className="right">
                 <Upper></Upper>
