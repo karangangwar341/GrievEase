@@ -28,9 +28,9 @@ const Main = () => {
                 <Lower />
             </div>
            </div>
-          
         </div>
     );
 }
+
 
 export default Main;
