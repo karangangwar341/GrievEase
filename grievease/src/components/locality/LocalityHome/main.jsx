@@ -22,7 +22,7 @@ const Main=()=>{
                 {/* <ProfileCard/> */}
                 {/* <CardComponent/> */}
                 {/* <YourGrievances/> */}
-                <Water/>
+                <YourGrievances />
             </div>
             <div className="right">
                 <Upper></Upper>
