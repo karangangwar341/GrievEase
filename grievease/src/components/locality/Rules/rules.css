@@ -1,0 +1,27 @@
+.rules{
+    width:100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius:.5em;
+    padding: 1em;
+    overflow: auto;
+    height: 650px;
+}
+.rules h2 {
+    margin-top: 1em;
+    margin-bottom: 2em;
+    color: #410e03;
+}
+.line {
+    background-color: #721905;
+    border-color: grey;
+    height: 4px;
+    margin-top: 1em;
+}
+.intro,.reason,
+.guidelines,
+.excluded {
+    color: #6c3428;
+    font-weight: bold;
+    margin-top: 0.7em;
+    margin-bottom: 0.5em;
+}

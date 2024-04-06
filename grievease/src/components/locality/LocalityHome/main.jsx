@@ -5,6 +5,8 @@ import Lower from './Right/Lower';
 import './main.css';
 import CardComponent from '../GrievanceForm/FormCard';
 import ProfileCard from '../Grievances/ProfileCard';
+//import Rules from '../Rules/rules';
+//import Process from '../process/process';
 const Main=()=>{
     return(
         
@@ -18,6 +20,8 @@ const Main=()=>{
             </div>
             <div className="middle">
                 <ProfileCard/>
+                {/*<Process/>*/}
+                {/*<Rules/>*/}
             </div>
             <div className="right">
                 <Upper></Upper>
