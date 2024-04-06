@@ -26,6 +26,9 @@ import GovernmentRoad from "./components/Government/GovernmentGrievances/Departm
 import GovernmentLaw from "./components/Government/GovernmentGrievances/Departments/GovernmentLaw.jsx";
 import GovernmentMis from "./components/Government/GovernmentGrievances/Departments/GovernmentMis.jsx";
 import GovernmentWaste from "./components/Government/GovernmentGrievances/Departments/GovernmentWaste.jsx";
+import ProfessionalCard from "./components/WorkingProffesional/BeAProffessional.jsx";
+import ProfessionalCardHire from "./components/WorkingProffesional/ProfessionalCardHire.jsx";
+import HireAProfessional from "./components/WorkingProffesional/HireAProfessional.jsx";
 
 function App() {
   return (
@@ -48,6 +51,8 @@ function App() {
           <Route exact path="/home/process" element={<Process/>} />
           <Route exact path="/home/rules" element={<Rules/>} />
           <Route exact path="/home/about" element={<About/>} />
+          <Route exact path="/home/regester" element={<ProfessionalCard/>} />
+          <Route exact path="/home/hire" element={<HireAProfessional/>} />
         </Route>
         <Route exact path="/government" element={<GovernmentMain/>}>
           <Route exact path="/government/grievances" element={<GovernmentGrievances/>}/>

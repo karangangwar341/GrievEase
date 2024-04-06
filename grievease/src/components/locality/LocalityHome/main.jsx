@@ -7,6 +7,7 @@ import './main.css';
 import { Outlet } from "react-router";
 import Center from './center/Center';
 import Nav from './home/header';
+import ProfessionalButtons from './Right/right_bottom/ProfessionalButtons';
 
 const Main = () => {
     return (
@@ -24,8 +25,9 @@ const Main = () => {
                 <Outlet />
             </div>
             <div className="right">
-                <Upper />
+               <ProfessionalButtons/>
                 <Lower />
+                <Upper />
             </div>
            </div>
         </div>
