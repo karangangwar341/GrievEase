@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Shift from './Shift'
-import home from '../../../assets/home.png'
+import home from '../../../assets/home2.jpg'
 
 const Sample = () => {
     const[showSignUp,setShowSignup]=useState(false)

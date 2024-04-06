@@ -3,11 +3,8 @@ import Card2 from './lefty/card2/Card2';
 import Upper from './Right/upper';
 import Lower from './Right/Lower';
 import './main.css';
-import CardComponent from '../GrievanceForm/FormCard';
-import ProfileCard from '../Grievances/ProfileCard';
-import Header from './Header';
-import YourGrievances from '../Grievances/YourGrievances';
-import Water from '../Grievances/Departments/Water';
+import { Outlet } from "react-router";
+import Center from './center/Center';
 const Main=()=>{
     return(
         
@@ -19,10 +16,9 @@ const Main=()=>{
                 
             </div>
             <div className="middle">
-                {/* <ProfileCard/> */}
-                {/* <CardComponent/> */}
-                {/* <YourGrievances/> */}
-                <YourGrievances />
+               
+                <Center/>
+                <Outlet></Outlet>
             </div>
             <div className="right">
                 <Upper></Upper>

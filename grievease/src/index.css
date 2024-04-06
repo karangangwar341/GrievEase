@@ -1,3 +1,18 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+:root{
+    .bg-gradient {
+  background-image: linear-gradient(to bottom right, #fbd38d, #fb8d3d);
+}
+
+.h-screen {
+  height: 100vh; /* Full height of the viewport */
+}
+
+.w-screen {
+  width: 100vw; /* Full width of the viewport */
+}
+
+}
