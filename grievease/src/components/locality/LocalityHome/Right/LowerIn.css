@@ -21,6 +21,7 @@
   .innerinfocontent {
     display: flex;
     align-items: center;
+    justify-content: left;
     width: 100%;
     padding: 0px;
     position: relative;
@@ -33,21 +34,21 @@
     width: 3.5em;
     height: 3.5em;
     border-radius: 10%;
-    margin:.15em;
+    
     margin-right: 0;
     justify-self: center;
   }
   
   .item {
-  
     font-weight: bold;
-    text-align: center;
-    margin-left: 0.4em;
-    overflow: hidden;
-    display: inline;
+    text-align: left;
+    white-space: wrap; /* Prevent text from wrapping to the next line */
+    overflow: hidden; /* Hide any overflow */
+    display: inline-block; /* Display the element as inline-block */
     font-size: 1.1em;
     color: #6c3428;
-  }
+}
+
   .arrow{
     
     position:absolute;

@@ -15,7 +15,7 @@ const Main=()=>{
                <Card1></Card1>
                 
             </div>
-            <div className="middle">
+            <div className="middle p-3 shadow-xl shadow-black/20">
                 <CardComponent/>
             </div>
             <div className="right">
