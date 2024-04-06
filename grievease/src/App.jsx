@@ -27,6 +27,7 @@ import GovernmentLaw from "./components/Government/GovernmentGrievances/Departme
 import GovernmentMis from "./components/Government/GovernmentGrievances/Departments/GovernmentMis.jsx";
 import GovernmentWaste from "./components/Government/GovernmentGrievances/Departments/GovernmentWaste.jsx";
 import ProfessionalCard from "./components/WorkingProffesional/BeAProffessional.jsx";
+import GovernmentChart from './components/Government/GovernmentGrievances/GovernmentChart/GovernmentChart.jsx'
 import ProfessionalCardHire from "./components/WorkingProffesional/ProfessionalCardHire.jsx";
 import HireAProfessional from "./components/WorkingProffesional/HireAProfessional.jsx";
 
@@ -57,6 +58,7 @@ function App() {
         <Route exact path="/government" element={<GovernmentMain/>}>
           <Route exact path="/government/grievances" element={<GovernmentGrievances/>}/>
           <Route exact path="/government/inprocess" element={<InProcess/>}/>
+          <Route exact path="/government/chart" element={<GovernmentChart/>}/>
           <Route exact path="/government/Solved" element={<GovernmentSolved/>}/>
           <Route exact path="/government/elec" element={<GovernmentElectricity/>}/>
           <Route exact path="/government/water" element={<GovernmentWater/>}/>
@@ -64,6 +66,7 @@ function App() {
           <Route exact path="/government/law" element={<GovernmentLaw/>}/>
           <Route exact path="/government/mis" element={<GovernmentMis/>}/>
           <Route exact path="/government/waste" element={<GovernmentWaste/>}/>
+        
         </Route>
       </Routes>
     </>

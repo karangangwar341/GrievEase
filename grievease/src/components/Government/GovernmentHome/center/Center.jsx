@@ -21,9 +21,10 @@ const Center = () => {
 };
 
 export default Center;*/
+//import GovernmentChart from "../../GovernmentGrievances/GovernmentChart/GovernmentChart";
+import TotalGrievance from "../../GovernmentGrievances/TotalGrievancePieChart/TotalGrievances";
 import "./Center.css";
 import { useLocation } from "react-router-dom";
-// import TotalGrievance from "../../Grievances/TotalGrievancePieChart/TotalGrievances.jsx"; // Correct import path
 
 const Center = () => {
   const location = useLocation();
@@ -32,7 +33,7 @@ const Center = () => {
     if (location.pathname === "/government") {
       return (
         <>
-          {/* <TotalGrievance /> */}
+          <TotalGrievance></TotalGrievance>
         </>
       );
     }

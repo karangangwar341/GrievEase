@@ -8,7 +8,7 @@ const GovernmentRoad = () => {
 
   const fetchGrievanceData = async () => {
     const userCollections = collection(database, "grievances");
-    const q =query(userCollections,where('status', 'in', ['pending', 'inprocess']), where('department','==','RoadWays'));;
+    const q =query(userCollections,where('status', 'in', ['pending', 'InProcess']), where('department','==','RoadWays'));;
     const data = await getDocs(q);
     const fil = data.docs.map((doc) => ({
       ...doc.data(),

@@ -35,7 +35,7 @@ const Card2 = () => {
         <Link to='/government/grievances'><Card2In name={data[1].text} imgurl={data[1].imgurl}></Card2In></Link>
         <Link to='/government/inprocess'><Card2In name={data[2].text} imgurl={data[2].imgurl}></Card2In></Link>
         <Link to='/government/solved'><Card2In name={data[3].text} imgurl={data[3].imgurl}></Card2In></Link>
-        <Link to='/government/show'><Card2In name={data[4].text} imgurl={data[4].imgurl}></Card2In></Link>
+        <Link to='/government/chart'><Card2In name={data[4].text} imgurl={data[4].imgurl}></Card2In></Link>
       </div>
     </div>
   );
