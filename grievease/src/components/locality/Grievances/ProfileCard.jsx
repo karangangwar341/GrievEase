@@ -28,8 +28,8 @@ const ProfileCard = ({ post }) => {
     return (
         <div className='p-3 bg-orange-400/60 shadow-md rounded-xl mb-3'>
             <div className='flex flex-row w-5em'>
-                <div className='w-1/4 h-38 mr-5'>
-                    <img src={post.image} alt={post.name} className='rounded-xl h-fit'/>
+                <div className='w-1/4 h-auto mr-5'>
+                    <img src={post.image} alt={post.name} className='rounded-xl h-36 w-36'/>
                 </div>
                 <div className='w-4/6'>
                     <div className='mb-1'>
@@ -52,11 +52,11 @@ const ProfileCard = ({ post }) => {
                         )}
                     </div>
                 </div>
-                <div className='p-3 pt-8'>
+                <div className=' pt-8 flex flex-col justify-center items-center '>
                     <div className='bg-white mb-4 w-12 rounded-full h-12 flex justify-center items-center p-1' onClick={handleLikes}>
                         <FaHeart />
                     </div>
-                    <div className='pl-4'>
+                    <div className=''>
                         <p className='font-semibold text-md'>{totalCount}</p>
                     </div>
                 </div>
