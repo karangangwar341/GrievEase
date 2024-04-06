@@ -11,7 +11,11 @@ import Nav from './home/header';
 const Main = () => {
     return (
         <div className="main">
-            <div className="left">
+            <div>
+                <Nav />
+            </div>
+           <div className='flex'>
+           <div className="left">
                 <Card2 />
                 <Card1 />
             </div>
@@ -23,9 +27,8 @@ const Main = () => {
                 <Upper />
                 <Lower />
             </div>
-          { /* <div>
-                <Nav />
-            </div>*/}
+           </div>
+          
         </div>
     );
 }

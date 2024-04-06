@@ -6,6 +6,7 @@
     z-index: 1;
     backdrop-filter: blur(10px); /* Apply the background blur */
     -webkit-backdrop-filter: blur(10px); 
+    overflow-y: scroll;
     
     
   }
@@ -20,10 +21,13 @@
     align-items: center;
     text-align: center;
     font-size: 1.5em;
-    overflow: hidden;
+   overflow: auto;
   }
   
   .card-content {
     padding: 10px;
   }
-  
+  .card::-webkit-scrollbar {
+    width: 0; /* Hide scrollbar */
+    background: transparent; /* Optional: if you want no background color */
+  }

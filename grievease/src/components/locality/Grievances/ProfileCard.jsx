@@ -14,7 +14,6 @@ const ProfileCard = ({ post }) => {
         const grievanceRef = doc(database, "grievances", post.id);
         await updateDoc(grievanceRef, { Upvotes: (post.Upvotes)+1 });
         console.log(post.id);
-        window.location.reload();
       }
     
     // function () {
