@@ -4,6 +4,7 @@ import Upper from './Right/upper';
 import Lower from './Right/Lower';
 import './main.css';
 import CardComponent from '../GrievanceForm/FormCard';
+import ProfileCard from '../Grievances/ProfileCard';
 const Main=()=>{
     return(
         
@@ -16,7 +17,7 @@ const Main=()=>{
                 
             </div>
             <div className="middle">
-                <CardComponent/>
+                <ProfileCard/>
             </div>
             <div className="right">
                 <Upper></Upper>
