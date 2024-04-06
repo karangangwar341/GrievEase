@@ -1,0 +1,29 @@
+.feed {
+  margin-top: 1em;
+  background-color: rgba(255,255,255, 0.1); /* Add some transparency to the background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  
+  padding: 0.7em;
+}
+.btn{
+   color:#6c3428;
+   background-color: rgba(255, 255, 255, 0);
+   border-radius: 8px;
+   height: 2.5rem;
+   overflow: hidden;
+   font-size: 1em;
+   font-weight: bold;
+  margin: 0;
+   border-width: 0;
+}
+
+.para{
+    color:#431a11;
+   font-size: 1.2em;
+    
+}
+.para1{
+    color:#8f675f;
+    
+}
