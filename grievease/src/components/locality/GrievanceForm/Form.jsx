@@ -4,7 +4,6 @@ import { serverTimestamp, collection, addDoc } from "firebase/firestore";
 import { auth, database } from "../../../firebase";
 const GrievancesRef = collection(database, "grievances");
 class FormComponent extends Component {
-
   constructor(props) {
     super(props);
 
@@ -35,7 +34,6 @@ class FormComponent extends Component {
     this.setState({ selectedOption: e.target.value });
   };
 
-
   handleImageChange = (e) => {
     // this.setState({ image: e.target.value });
     const file = e.target.files[0];
@@ -46,11 +44,9 @@ class FormComponent extends Component {
         const base64String = e.target.result;
         this.setState({ image: base64String });
       };
-  
+
       reader.readAsDataURL(file);
     }
-
-
   };
 
   handleSubmit = async (e) => {
@@ -66,8 +62,9 @@ class FormComponent extends Component {
         department: this.state.selectedOption,
         description: this.state.description,
         phoneNumber: this.state.countryCode + this.state.phoneNumber,
-       // uid: auth.currentUser.uid,
+        // uid: auth.currentUser.uid,
         Upvotes: 0,
+        title:this.state.title,
         timestamp: serverTimestamp(),
         image: this.state.image,
         status: "pending",
@@ -88,7 +85,7 @@ class FormComponent extends Component {
               <label>
                 First Name:
                 <input
-                className="bg-white"
+                  className="bg-white"
                   required
                   type="text"
                   name="firstName"
@@ -162,7 +159,18 @@ class FormComponent extends Component {
             />
           </label>
           <br />
-
+          <label>
+            Title for Grievance:
+            <input
+              required
+              name="title"
+              type="text"
+              placeholder="Title"
+              value={this.state.title}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <br />
           <label>
             Describe Your Case:
             <textarea
@@ -224,7 +232,7 @@ class FormComponent extends Component {
             Upload an Image:
             <div className="file-upload-container">
               <input
-              required
+                required
                 placeholder="Enter the Gdrive link of image"
                 type="file"
                 accept="image/*"
@@ -233,7 +241,6 @@ class FormComponent extends Component {
               />
             </div>
           </label>
-
 
           <br />
 
