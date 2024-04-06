@@ -1,13 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaHeart } from "react-icons/fa";
-import { MdKeyboardArrowDown, MdKeyboardArrowUp, MdWidthFull } from "react-icons/md";
-import { database } from "../../../firebase";
-import { updateDoc, doc } from "firebase/firestore";
+import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { database, auth } from "../../../firebase"; // Adjust the import path as necessary
+import { updateDoc, doc, arrayUnion, getDoc, onSnapshot } from "firebase/firestore";
 
 const ProfileCard = ({ post }) => {
     const [totalCount, setTotalCount] = useState(post.Upvotes);
     const [showDescription, setShowDescription] = useState(false);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
+    const [comments, setComments] = useState([]);
+    const [newComment, setNewComment] = useState('');
+    const [currentUser, setCurrentUser] = useState(null);
+    const grievanceRef = doc(database, "grievances", post.id);
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            if (auth.currentUser) {
+                setCurrentUser(auth.currentUser);
+            }
+        };
+        fetchUserData();
+    }, []);
+
+    useEffect(() => {
+        const fetchComments = async () => {
+            const grievanceDoc = await getDoc(grievanceRef);
+            if (grievanceDoc.exists()) {
+                setComments(grievanceDoc.data().comments || []);
+            }
+        };
+        fetchComments();
+    }, [post.id]);
+
+    useEffect(() => {
+        const unsubscribe = onSnapshot(grievanceRef, (doc) => {
+            if (doc.exists()) {
+                setComments(doc.data().comments || []);
+            }
+        });
+
+        // Clean up the listener when the component unmounts
+        return () => unsubscribe();
+    }, [grievanceRef]);
 
     const toggleCommentSection = () => {
         setIsCommentOpen(!isCommentOpen);
@@ -15,17 +49,33 @@ const ProfileCard = ({ post }) => {
 
     const handleLikes = async () => {
         setTotalCount((count) => count + 1);
-        const grievanceRef = doc(database, "grievances", post.id);
-        await updateDoc(grievanceRef, { Upvotes: post.Upvotes + 1 });
-        console.log(post.id);
-    }
+        await updateDoc(grievanceRef, { Upvotes: arrayUnion(1) });
+    };
 
     const toggleDescription = () => {
         setShowDescription(!showDescription);
     };
 
+    const addComment = async () => {
+        if (!currentUser) return; // Ensure user is logged in
+
+        const newCommentObj = {
+            text: newComment,
+            author: currentUser.displayName || "Anonymous", // Use displayName from Firebase Auth
+            timestamp: new Date().toISOString(),
+        };
+
+        await updateDoc(grievanceRef, {
+            comments: arrayUnion(newCommentObj),
+        });
+
+        setComments((currentComments) => [...currentComments, newCommentObj]);
+        setNewComment('');
+    };
+
     return (
-        <div className='p-3 bg-orange-400/60 shadow-md rounded-xl mb-3'>
+        <div>
+        <div className='p-3 bg-orange-400/60 shadow-md rounded-xl mb-1'>
             <div className='flex flex-row w-5em'>
                 <div className='w-1/4 h-auto mr-5'>
                     <img src={post.image} alt={post.name} className='rounded-xl h-36 w-36' />
@@ -60,29 +110,44 @@ const ProfileCard = ({ post }) => {
                     </div>
                 </div>
             </div>
-            <div className='mt-1'>
+            
+        </div>
+        <div className='mt-0 mb-8'>
                 <div className=" relative text-left flex">
-                    <button onClick={toggleCommentSection} type="button" className="ml-auto w-64 flex bg-white text-orange-950 items-center mr-4 mb-3 px-4 py-2 mt-3 rounded-lg shadow-md hover:bg-orange-500 transition duration-300 ease-in-out">
-                        Open Comment Section
-                        <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                            <path fillRule="evenodd" d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                            <path fillRule="evenodd" d="M3 10a7 7 0 1114 0 7 7 0 01-14 0zm7-5a1 1 0 00-1 1v2a1 1 0 002 0V6a1 1 0 00-1-1zm0 8a1 1 0 100 2 1 1 0 000-2z" />
-                        </svg>
+                    <button onClick={toggleCommentSection} type="button" className="ml-auto w-56 flex bg-white text-orange-950 items-center mr-4 mb-3 px-4 py-2 mt-3 rounded-lg shadow-md hover:bg-orange-500 transition duration-300 ease-in-out">
+                        {isCommentOpen? "Close Comment Section":"Open Comment Section"}
                     </button>
-
                     {isCommentOpen && (
-                       <div style={{ width: "100%", height: 400 }} className="z-10 mt-14 origin-top-right absolute right-0 rounded-md shadow-lg bg-white/40 ring-1 ring-black ring-opacity-5 backdrop-blur-md">
-                  
-                  
-                  
-                  
-                       </div>
-                   
+                        <div style={{ width: "100%", height: 400 }} className="z-10 mt-14 origin-top-right absolute right-0 rounded-md shadow-lg bg-white/50 p-6 ring-1 ring-black ring-opacity-5 backdrop-blur-md">
+                            <div style={{ height: 320, overflowY: 'scroll', msOverflowStyle: 'none', scrollbarWidth: 'none' }} className='overflow-y-scroll'>
+                                {comments.map((comment, index) => (
+                                    <div key={index} className="comment flex justify-between">
+                                        <p className='bg-white/90 m-1 w-fit pr-12 pl-3 rounded-lg'>{comment.text}</p>
+                                        <div className=''>
+                                            <p className='bg-orange-400/60 m-1 w-fit pr-12 pl-3 rounded-lg'>{comment.author}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className='flex mt-2 gap-1'>
+                            <input
+                                type="text"
+                                className='rounded-2xl'
+                                value={newComment}
+                                style={{ background: "#ffffff" }}
+                                onChange={(e) => setNewComment(e.target.value)}
+                                placeholder="Add a comment..."
+                            />
+
+                            <button className='bg-orange-400 hover:bg-orange-500 hover:shadow-sm px-8 rounded-xl' onClick={addComment}>Submit</button>
+                                </div>
+                        </div>
                     )}
                 </div>
             </div>
         </div>
     );
-}
+};
 
 export default ProfileCard;

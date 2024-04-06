@@ -20,14 +20,14 @@ const Shift = () => {
             <div >
                 <div className={`inset-0 flex justify-center items-center w-full`}>
                     {isSignIn ? (
-                        <div>
+                        <div >
                             <Login />
-                            <p>Don't have an account? <button className="button button-flat hover:bg-orange-200 text-orange-900 font-medium text-sm px-2  mr-1 rounded-lg focus:outline-none" onClick={switchToSignUp}>Sign Up</button></p>
+                            <p className='mt-6'>Don't have an account? <button className="button button-flat hover:bg-orange-200 text-orange-900 font-medium text-sm px-2  mr-1 rounded-lg focus:outline-none" onClick={switchToSignUp}>Sign Up</button></p>
                         </div>
                     ) : (
                         <div>
                             <SignUp />
-                            <p>Already have an account? <button className="button button-flat hover:bg-orange-200 text-orange-900 font-medium text-sm px-2  mr-1 rounded-lg focus:outline-none" onClick={switchToSignIn}>Sign In</button></p>
+                            <p className='mt-6 text-center'>Already have an account? <button className="button button-flat hover:bg-orange-200 text-orange-900 font-medium text-sm px-2  mr-1 rounded-lg focus:outline-none" onClick={switchToSignIn}>Sign In</button></p>
                         </div>
                     )}
                 </div>

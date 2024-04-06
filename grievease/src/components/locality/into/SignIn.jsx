@@ -80,12 +80,12 @@ export default function Login() {
           />
         </div>
       </div>
-      <section className="flex flex-row gap-1">
+      {/* <section className="flex flex-row gap-1">
       <h2 className="text-sm ">
         didn't have account?
       </h2>
       <a className="button button-flat hover:bg-orange-200 text-orange-900 font-medium text-sm px-2  mr-1 rounded-lg focus:outline-none" href="#">signup</a>
-      </section>
+      </section> */}
 
       <p className="form-actions flex justify-center mt-6">
         <button className="button button-flat bg-orange-400 hover:bg-orange-200 text-orange-900 font-medium text-sm px-4 py-2 mr-2 rounded-lg focus:outline-none" type="reset">Reset</button>

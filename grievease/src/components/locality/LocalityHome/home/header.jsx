@@ -10,11 +10,11 @@ import SearchIcon from '@mui/icons-material/Search';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import styles from './header.module.css';
 import LogoutIcon from '@mui/icons-material/Logout';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DiamondIcon from '@mui/icons-material/Diamond';
 import { useNavigate } from 'react-router-dom';
 const Nav = () => {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const [credit, setCredit] = useState(10);
 
   const [open, setOpen] = useState(false);
@@ -47,24 +47,24 @@ const Nav = () => {
     if (user) {
       fetchUserDetails();
     }
-    else{
-      navigate('/next',{replace:true})
+    else {
+      navigate('/next', { replace: true })
     }
   }, []);
 
   const fetchUserDataFromFirestore = async () => {
     try {
       const user = auth.currentUser;
-  
+
       if (user) {
         const userDataCollection = 'users';
         const userCollection = collection(database, userDataCollection);
-        
+
         const q = query(userCollection, where('UID', '==', user.uid));
-  
+
         // Fetch the data using the query
         const querySnapshot = await getDocs(q);
-  
+
         if (querySnapshot.size > 0) {
           const doc = querySnapshot.docs[0];
           const userData = doc.data();
@@ -73,7 +73,7 @@ const Nav = () => {
           throw new Error('User document not found in Firestore.');
         }
       } else {
-        navigate('/next',{replace:true})
+        navigate('/next', { replace: true })
         throw new Error('User is not authenticated.');
       }
     } catch (error) {
@@ -90,32 +90,32 @@ const Nav = () => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
-  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if(formData.Name===''){
+    if (formData.Name === '') {
       formData.Name = userData.Name;
     }
-    if(formData.phoneNumber===''){
+    if (formData.phoneNumber === '') {
       formData.phoneNumber = userData.phoneNumber;
     }
-    if(formData.city===''){
+    if (formData.city === '') {
       formData.city = userData.city;
     }
-    if(formData.locality===''){
+    if (formData.locality === '') {
       formData.locality = userData.locality;
     }
     console.log(formData);
-    try{
-    const userDataCollection = 'users';
-    const userCollection = collection(database, userDataCollection);
-    const user = auth.currentUser;
-    const q = query(userCollection, where('UID', '==', user.uid));
-    const querySnapshot = await getDocs(q);
-    const docRef = querySnapshot.docs[0].ref;
-    await updateDoc(docRef, formData);
+    try {
+      const userDataCollection = 'users';
+      const userCollection = collection(database, userDataCollection);
+      const user = auth.currentUser;
+      const q = query(userCollection, where('UID', '==', user.uid));
+      const querySnapshot = await getDocs(q);
+      const docRef = querySnapshot.docs[0].ref;
+      await updateDoc(docRef, formData);
     }
-    catch{
+    catch {
       console.error('error');
     }
     setOpen(false);
@@ -147,7 +147,8 @@ const Nav = () => {
       <div className={styles.iconsContainer}>
         <button className={styles.iconButton}><DiamondIcon /></button>
         <span className={styles.credit}>{credit}</span>
-        <button className={styles.iconButton} onClick={handleLogout} ><LogoutIcon /></button>
+        <Link to="/next"><button className={styles.iconButton} onClick={handleLogout} ><LogoutIcon /></button></Link>
+
         {/* <button className={styles.iconButton}><NotificationsIcon /></button> */}
         <button className={styles.iconButton}><ProfileIcon /></button>
         <span className={styles.profileName}>{userData.Name}</span>
