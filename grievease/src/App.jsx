@@ -17,6 +17,8 @@ import Rules from "./components/locality/Rules/rules.jsx";
 import About from "./components/locality/about/about.jsx";
 import PieChart from "./components/locality/Grievances/InYourArea/PieChar.jsx";
 import ProfessionalCard from "./components/WorkingProffesional/BeAProffessional.jsx";
+import ProfessionalCardHire from "./components/WorkingProffesional/ProfessionalCardHire.jsx";
+import HireAProfessional from "./components/WorkingProffesional/HireAProfessional.jsx";
 
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
           <Route exact path="/home/rules" element={<Rules/>} />
           <Route exact path="/home/about" element={<About/>} />
           <Route exact path="/home/regester" element={<ProfessionalCard/>} />
+          <Route exact path="/home/hire" element={<HireAProfessional/>} />
         </Route>
       </Routes>
     </>
