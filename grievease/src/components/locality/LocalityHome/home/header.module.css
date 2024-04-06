@@ -1,5 +1,5 @@
 .header {
-    height: 8vh;
+    height: 55px;
     background-color: rgba(255, 255, 255, 0.7);
     color: #fff;
     padding: 1rem;
@@ -15,14 +15,15 @@
       border-radius: 20%;
   }
   .logo {
-      width: 35px;
-      height: 35px;
+      width: 55px;
+      height: 55px;
       margin-right: 1rem;
   }
   .appName{
       margin: 0;
+      font-size: larger;
       color: #df6609;
-      font-family: 'Amatic sc', cursive;
+      font-family:fantasy;
   }
   .searchContainer {
       display: flex;
@@ -32,7 +33,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       padding: 12px;
       width: 40%;
-      height: 3vh;
+      height: 4vh;
     }
     
   .searchInput.navSearch {

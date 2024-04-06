@@ -3,6 +3,7 @@
   /* top: 5rem; Adjust the bottom distance as needed */
   /*left: 1.8rem;  Adjust the left distance as needed */
   width: 100%;
+  overflow-y: scroll;
   /* height: 340px; */
   background-color: rgba(
     255,
@@ -19,4 +20,8 @@
 
 .card2-content {
   padding: 10px;
+}
+.card2::-webkit-scrollbar {
+  width: 0; /* Hide scrollbar */
+  background: transparent; /* Optional: if you want no background color */
 }
