@@ -19,6 +19,8 @@
     width:20%;
     min-width: 250px;
     overflow-y: scroll;
+    height: 90vh;
+    margin-top: 5px;
     
 }
 
@@ -53,6 +55,9 @@
     width:23%;
     min-width: 250px;
     padding: 1em;
+    overflow-y: scroll;
+    height: 90vh;
+    margin-top: 5px;
 }
 
 .centered-nav {

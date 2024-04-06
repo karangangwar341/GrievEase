@@ -6,7 +6,7 @@
     z-index: 1;
     backdrop-filter: blur(10px); /* Apply the background blur */
     -webkit-backdrop-filter: blur(10px); 
-    overflow-y: scroll;
+
     
     
   }
@@ -26,8 +26,9 @@
   
   .card-content {
     padding: 10px;
+    overflow-y: scroll;
   }
-  .card::-webkit-scrollbar {
+  .card-content::-webkit-scrollbar {
     width: 0; /* Hide scrollbar */
     background: transparent; /* Optional: if you want no background color */
   }
