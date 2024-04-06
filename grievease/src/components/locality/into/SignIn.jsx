@@ -22,25 +22,24 @@ export default function Login() {
     signInWithEmailAndPassword(auth, enteredValues.email, enteredValues.password)
     .then(async (userCredential) => {
       const user = userCredential.user;
-      const fetch = async () => {
-        const userDataCollection = 'users';
-        const userCollection = collection(database, userDataCollection);
-        const q = query(userCollection, where('UID', '==', user.uid));
-        const querySnapshot = await getDocs(q);
-        const doc = querySnapshot.docs[0];
-        const userData = doc.data();
-        if (userData.signInType === 'Government Official') {
-          alert("Sign In successful");
-          navigate('/government', { replace: true });
-          return true;
-        }
-        return false;
+      const userDataCollection = 'users';
+    const userCollection = collection(database, userDataCollection);
+    const q = query(userCollection, where('UID', '==', user.uid));
+    const querySnapshot = await getDocs(q);
+    const doc = querySnapshot.docs[0];
+    const userData = doc.data();
+    if (userData) {
+      if (userData.signInType === 'Government Official') {
+        alert("Sign In successful");
+        navigate('/government', { replace: true });
+      } else {
+        alert("Sign In successful");
+        navigate('/home', { replace: true });
       }
-      if(fetch()===false){
-      alert("Sign In successful");
-      navigate('/home', { replace: true });
+    } else {
+      alert("User data not found");
     }
-    })
+  })
     .catch((error) => {
       if (error.code === "auth/wrong-password") {
         alert("Invalid password");

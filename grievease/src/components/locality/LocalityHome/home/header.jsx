@@ -82,7 +82,7 @@ const Nav = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     auth.signOut();
   };
 

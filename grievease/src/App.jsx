@@ -30,6 +30,7 @@ import ProfessionalCard from "./components/WorkingProffesional/BeAProffessional.
 import GovernmentChart from './components/Government/GovernmentGrievances/GovernmentChart/GovernmentChart.jsx'
 import ProfessionalCardHire from "./components/WorkingProffesional/ProfessionalCardHire.jsx";
 import HireAProfessional from "./components/WorkingProffesional/HireAProfessional.jsx";
+import Solved from "./components/locality/Grievances/solved.jsx";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
           <Route exact path="/home/new" element={<CardComponent/>} />
           <Route exact path="/home/yourGrievances" element={<YourGrievances/>} />
           <Route exact path="/home/area" element={<PieChart/>} />
-          <Route exact path="/home/solved" element={<Waste/>} />
+          <Route exact path="/home/solved" element={<Solved/>} />
           <Route exact path="/home/process" element={<Process/>} />
           <Route exact path="/home/rules" element={<Rules/>} />
           <Route exact path="/home/about" element={<About/>} />
