@@ -26,9 +26,9 @@ const Lower = () => {
   return (
     <div className="info">
       <div>
-        <button onClick={submitHandle} className="btn2">
+        {/* <button onClick={submitHandle} className="btn2">
           Informatics &rarr;
-        </button>
+        </button> */}
         <LowerIn name={infodata[0].text} imgurl={infodata[0].imgurl}></LowerIn>
 
         <LowerIn name={infodata[1].text} imgurl={infodata[1].imgurl}></LowerIn>

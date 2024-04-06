@@ -76,7 +76,8 @@ form {
   
   label {
     font-size: 16px;
-    margin-bottom: 8px;
+    margin-bottom: 2px;
+    display: hidden;
   }
   
   .input-group {
@@ -102,7 +103,7 @@ form {
   }
   
   input::placeholder {
-    color: #999;
+    color: #000000;
   }
   
   /* Add any additional styles to suit your design */

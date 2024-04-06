@@ -88,6 +88,7 @@ class FormComponent extends Component {
               <label>
                 First Name:
                 <input
+                className="bg-white"
                   required
                   type="text"
                   name="firstName"
@@ -114,11 +115,12 @@ class FormComponent extends Component {
           <br />
 
           <label>
-            Street:
+            Complete Address
             <input
               required
               type="text"
               name="street"
+              placeholder="street"
               value={this.state.street}
               onChange={this.handleInputChange}
             />
@@ -126,11 +128,11 @@ class FormComponent extends Component {
           <br />
 
           <label>
-            Locality:
             <input
               required
               type="text"
               name="locality"
+              placeholder="locality"
               value={this.state.locality}
               onChange={this.handleInputChange}
             />
@@ -138,9 +140,9 @@ class FormComponent extends Component {
           <br />
 
           <label>
-            City:
             <input
               required
+              placeholder="city"
               type="text"
               name="city"
               value={this.state.city}
@@ -150,11 +152,11 @@ class FormComponent extends Component {
           <br />
 
           <label>
-            State:
             <input
               required
               type="text"
               name="state"
+              placeholder="state"
               value={this.state.state}
               onChange={this.handleInputChange}
             />
