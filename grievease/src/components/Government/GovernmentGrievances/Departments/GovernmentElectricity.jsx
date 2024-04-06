@@ -2,6 +2,7 @@ import ProfileCard from "../../../locality/Grievances/ProfileCard";
 import { database } from "../../../../firebase";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import  { useEffect, useState } from "react";
+import GovernmentProfileCard from "../GovernmentProfileCard";
 
 const GovernmentElectricity = () => {
   const [grievanceData, setGrievanceData] = useState([]);
@@ -25,7 +26,7 @@ const GovernmentElectricity = () => {
       <div className="card-headerG text-3xl font-bold text-orange-900 mb-4 items-center justify-center' text-center">Grievances Pending at Electricity DepartMent</div>
            <div className="overflow-y-scroll " style={{ overflowY: 'auto', msOverflowStyle: 'none', scrollbarWidth: 'none' }}> 
       {grievanceData.map((post, index) => (
-        <ProfileCard key={index} post={post} />
+        <GovernmentProfileCard key={index} post={post} />
       ))}
     </div>
     </div>
