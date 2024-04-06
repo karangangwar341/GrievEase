@@ -37,7 +37,12 @@ const SignUp = () => {
           city: data.City,
           locality: data.Locality,
         }).then(() => {
+          if(data.role=='Locality Member'){
           navigate('/home', {replace:true});
+        }
+          else{
+            navigate('/government', {replace:true});
+          }
         }).catch((error) => {
           console.error("Error adding document: ", error);
           alert("Error adding document");

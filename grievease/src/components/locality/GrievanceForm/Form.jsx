@@ -70,7 +70,6 @@ class FormComponent extends Component {
         status: "pending",
       });
       alert("Form submitted successfully");
-      window.location.reload();
     } catch (error) {
       alert("An error occurred: " + error.message);
     }

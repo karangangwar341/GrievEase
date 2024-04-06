@@ -1,9 +1,11 @@
 import { useState } from "react";
 import {signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../../firebase.js'
-import { useNavigate } from "react-router-dom";
+import { auth, database } from '../../../firebase.js'
+import {useNavigate} from 'react-router-dom';
+import { collection, query, getDocs, where } from "firebase/firestore";
+import { TbReplace } from "react-icons/tb";
 export default function Login() {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const [enteredValues, setEnteredValues] = useState({
     email: "",
     password: "",
@@ -18,17 +20,36 @@ export default function Login() {
     event.preventDefault();
     console.log(enteredValues);
     signInWithEmailAndPassword(auth, enteredValues.email, enteredValues.password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    alert('Signin successfully');
-    navigate('/home', {replace:true})
-  })
-  .catch((error) => {
-    
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    alert(errorMessage);
-  });
+    .then(async (userCredential) => {
+      const user = userCredential.user;
+      const fetch = async () => {
+        const userDataCollection = 'users';
+        const userCollection = collection(database, userDataCollection);
+        const q = query(userCollection, where('UID', '==', user.uid));
+        const querySnapshot = await getDocs(q);
+        const doc = querySnapshot.docs[0];
+        const userData = doc.data();
+        if (userData.signInType === 'Government Official') {
+          alert("Sign In successful");
+          navigate('/government', { replace: true });
+          return true;
+        }
+        return false;
+      }
+      if(fetch()===false){
+      alert("Sign In successful");
+      navigate('/home', { replace: true });
+    }
+    })
+    .catch((error) => {
+      if (error.code === "auth/wrong-password") {
+        alert("Invalid password");
+      } else if (error.code === "auth/user-not-found") {
+        alert("User not found");
+      } else {
+        alert("Sign In failed");
+      }
+    })
   }
   return (
     <div className="flex items-center justify-center text-orange-900">
