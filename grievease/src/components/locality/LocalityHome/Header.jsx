@@ -1,12 +1,12 @@
 
-import logo from '../../../assets/icon.png'; // Import your logo image
+import logo from '../../../assets/icon.png'; 
 
 const Header = ({ username }) => {
   return (
     <header className="bg-gray-800 bg-opacity-50 py-4 px-6 flex items-center justify-between">
       <div className="flex items-center space-x-4">
         <img src={logo} alt="Logo" className="w-10" />
-        <h1 className="text-white text-xl font-semibold">Your Website Name</h1>
+        <h1 className="text-white text-xl font-semibold">GrievEase</h1>
       </div>
       
       <div className="flex items-center space-x-4">

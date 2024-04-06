@@ -1,7 +1,9 @@
 import { useState } from "react";
 import {signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../../firebase.js'
+import { useNavigate } from "react-router-dom";
 export default function Login() {
+  const navigate= useNavigate();
   const [enteredValues, setEnteredValues] = useState({
     email: "",
     password: "",
@@ -19,6 +21,7 @@ export default function Login() {
   .then((userCredential) => {
     const user = userCredential.user;
     alert('Signin successfully');
+    navigate('/home', {replace:true})
   })
   .catch((error) => {
     

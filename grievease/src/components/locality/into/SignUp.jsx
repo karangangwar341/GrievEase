@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth, database } from '../../../firebase.js'
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [passwordAreNotEqual, setPasswordAreNotEqual] = useState(false);
 
   function submitHandler(event) {
@@ -24,8 +25,8 @@ const SignUp = () => {
     createUserWithEmailAndPassword(auth, data.email, data.password)
       .then((userCredential) => {
         const user = userCredential.user;
+        
         alert("Sign up successfully");
-
         const userRef = collection(database, "users");
         addDoc(userRef, {
           Name: data.name,
@@ -36,7 +37,7 @@ const SignUp = () => {
           city: data.City,
           locality: data.Locality,
         }).then(() => {
-          console.log("Document successfully written!");
+          navigate('/home', {replace:true});
         }).catch((error) => {
           console.error("Error adding document: ", error);
           alert("Error adding document");
