@@ -36,9 +36,12 @@ const YourGrievances = () => {
   ];
   return (
     <div>
-      {grievances.map((post, index) => (
+      <div className="card-headerG text-3xl font-bold text-orange-900 mb-4 items-center justify-center' text-center">Your Grievances</div>
+           <div className="overflow-y-scroll " style={{ overflowY: 'auto', msOverflowStyle: 'none', scrollbarWidth: 'none' }}> 
+           {grievances.map((post, index) => (
         <ProfileCard key={index} post={post} />
       ))}
+           </div>
     </div>
   );
 };
