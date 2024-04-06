@@ -23,11 +23,12 @@ const Main = () => {
                 <Upper />
                 <Lower />
             </div>
-          { /* <div>
+         { /* <div>
                 <Nav />
-            </div>*/}
+             </div>*/}
         </div>
     );
 }
+
 
 export default Main;
