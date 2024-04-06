@@ -7,6 +7,7 @@ import CardComponent from '../GrievanceForm/FormCard';
 import ProfileCard from '../Grievances/ProfileCard';
 import Header from './Header';
 import YourGrievances from '../Grievances/YourGrievances';
+import Water from '../Grievances/Departments/Water';
 const Main=()=>{
     return(
         
@@ -19,8 +20,9 @@ const Main=()=>{
             </div>
             <div className="middle">
                 {/* <ProfileCard/> */}
-                <CardComponent/>
+                {/* <CardComponent/> */}
                 {/* <YourGrievances/> */}
+                <Water/>
             </div>
             <div className="right">
                 <Upper></Upper>
