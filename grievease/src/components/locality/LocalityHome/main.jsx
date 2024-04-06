@@ -5,13 +5,12 @@ import Lower from './Right/Lower';
 import './main.css';
 import CardComponent from '../GrievanceForm/FormCard';
 import ProfileCard from '../Grievances/ProfileCard';
-//import Rules from '../Rules/rules';
-//import Process from '../process/process';
+import Header from './Header';
+import YourGrievances from '../Grievances/YourGrievances';
 const Main=()=>{
     return(
         
         <div className="main">
-            
             <div className="left">
                
                <Card2></Card2>
@@ -19,9 +18,9 @@ const Main=()=>{
                 
             </div>
             <div className="middle">
-                <ProfileCard/>
-                {/*<Process/>*/}
-                {/*<Rules/>*/}
+                {/* <ProfileCard/> */}
+                {/* <CardComponent/> */}
+                <YourGrievances/>
             </div>
             <div className="right">
                 <Upper></Upper>
