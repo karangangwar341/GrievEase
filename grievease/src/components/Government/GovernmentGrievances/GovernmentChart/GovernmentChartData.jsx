@@ -27,7 +27,7 @@ const GovernmentChartData = () => {
   useEffect(() => {
     const statusCounts = {
       'pending': 0,
-      'In process': 0,
+      'InProcess': 0,
       'solved': 0,
     };
 

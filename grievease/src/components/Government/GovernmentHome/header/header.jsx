@@ -122,7 +122,7 @@ const Header = () => {
       </div>
 
       <div className={styles.iconsContainer}>
-        <Link to="/home"><button className={styles.iconButton}><HomeIcon /></button></Link>
+        <Link to="/government"><button className={styles.iconButton}><HomeIcon /></button></Link>
         <button className={styles.iconButton}><GroupsIcon /></button>
         {/* <button className={styles.iconButton}><GroupsIcon /></button> */}
       </div>

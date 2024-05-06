@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FaHeart } from "react-icons/fa";
 import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
 import { database, auth } from "../../../firebase"; // Adjust the import path as necessary
-import { updateDoc, doc, arrayUnion, getDoc, onSnapshot } from "firebase/firestore";
+import { updateDoc, doc, arrayUnion, getDoc, onSnapshot} from "firebase/firestore";
 
 const ProfileCard = ({ post }) => {
     const [totalCount, setTotalCount] = useState(post.Upvotes);
@@ -23,6 +23,7 @@ const ProfileCard = ({ post }) => {
     }, []);
 
     useEffect(() => {
+        
         const fetchComments = async () => {
             const grievanceDoc = await getDoc(grievanceRef);
             if (grievanceDoc.exists()) {
@@ -49,8 +50,8 @@ const ProfileCard = ({ post }) => {
 
     const handleLikes = async () => {
         setTotalCount((count) => count + 1);
-        await updateDoc(grievanceRef, { Upvotes: arrayUnion(1) });
-    };
+        await updateDoc(grievanceRef, { Upvotes: totalCount });
+    }
 
     const toggleDescription = () => {
         setShowDescription(!showDescription);
@@ -61,7 +62,7 @@ const ProfileCard = ({ post }) => {
 
         const newCommentObj = {
             text: newComment,
-            author: currentUser.displayName || "Anonymous", // Use displayName from Firebase Auth
+            author: currentUser.displayName || "Anonymous",
             timestamp: new Date().toISOString(),
         };
 
